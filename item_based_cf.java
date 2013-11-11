@@ -5,9 +5,10 @@ import java.util.HashMap;
  * Using item_based_collaborative filtering algorithm
  * The similarity is measured by Pearson correlation
  *
- * There are 6040 users and 3952 movies
+ * 100000 ratings by 943 users on 1682 items
  */
 public class item_based_cf {
+	
 	/** 
 	 * @param mvoieID
 	 *            the ids of the movies that will be computed
@@ -26,21 +27,23 @@ public class item_based_cf {
 	public item_based_cf(int id1, int id2){
 		movieID1 = id1;
 		movieID2 = id2;
-		HashMap<Integer, Integer[]> movie_rate_table = movie_user_ratings.movie_ratings();
+		HashMap<Integer, Integer[]> movie_rate_table = user_rated_movie.movie_ratings();
 		ratings1 = movie_rate_table.get(movieID1);
     	ratings2 = movie_rate_table.get(movieID2);
 	}
+	
 	/**
 	 * Find the users who have rated both of the two movies
 	 */
     public ArrayList<Integer> commonUser(){
     	ArrayList<Integer> user_group = new ArrayList<Integer>();
     	for(int i = 0; i < ratings1.length; i++){
-    		if(!ratings1[i].equals("0") && !ratings2[i].equals("0"))
+    		if(ratings1[i] != 0 && ratings2[i] != 0)
     			user_group.add(i);
     	}
     	return user_group;
     }
+    
     /**
 	 * Find the average ratings for the two movies
 	 */
@@ -48,13 +51,13 @@ public class item_based_cf {
     	int[] count = {0, 0};
     	double[] avg = {0, 0};
     	for(int i = 0; i < ratings1.length; i++){
-    		if(!ratings1[i].equals("0")){
+    		if(ratings1[i] != 0){
     			count[0]++;
     			avg[0] += ratings1[i];
     		}
     	}
     	for(int i = 0; i < ratings2.length; i++){
-    		if(!ratings2[i].equals("0")){
+    		if(ratings2[i] != 0){
     			count[1]++;
     			avg[1] += ratings2[i];
     		}
@@ -63,8 +66,9 @@ public class item_based_cf {
     	avg[1] = avg[1] / count[1];
     	return avg;
     }
+    
     /**
-	 * Compute pearson correlation-based similarity
+	 * Compute Pearson correlation-based similarity
 	 */
     public double pearson_sim(){
     	ArrayList<Integer> user_group = commonUser();
@@ -83,3 +87,4 @@ public class item_based_cf {
     	System.out.println(sim.pearson_sim());
     }
 }
+
