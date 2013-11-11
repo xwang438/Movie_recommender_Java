@@ -96,14 +96,14 @@ public class prediction {
 		ArrayList<String[]> users = read_file.readInData("u.user", '|');
 		if(predict_sorting.size() < 3){
 			for(int i = 0; i < predict_sorting.size(); i++){
-				int movieID = predict_sorting.get(i)[0];
+				int movieID = predict_sorting.get(i)[1];
 				String movie_name = movies.get(movieID - 1)[1];
 				recommend.add(movie_name);
 			}
 		}
 		else{
 			for(int i = 0; i < 10; i++){
-				int movieID = predict_sorting.get(i)[0];
+				int movieID = predict_sorting.get(i)[1];
 				String movie_name = movies.get(movieID - 1)[1];
 				recommend.add(movie_name);
 			}
