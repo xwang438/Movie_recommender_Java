@@ -36,3 +36,16 @@ Then I computed the root squared mean error(RSME).
 
 Part IV, Recommendation
 Based on the prediction, we can choose top n movies that have highest predicted ratings to the user.
+As a result of this project, For user 186, the RMSE is 2.77
+And the top 10 recommendations for this user would be: 
+566, Clear and Present Danger  (1994)
+568, Speed (1994)
+934, Preacher's Wife, The (1996)
+106, Diabolique (1996)
+306, Mrs. Brown (Her Majesty, Mrs. Brown) (1997)
+79, Fugitive, The (1993)
+243, Jungle2Jungle (1997)
+95, Aladdin (1992)
+596, Hunchback of Notre Dame, The (1996)
+226, Die Hard 2 (1990)
+
